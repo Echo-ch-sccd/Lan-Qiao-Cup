@@ -1,0 +1,26 @@
+#extend用map可以返回数值
+#append用map只能返回map类型数字
+#一维矩阵可以用【】表示，后面赋值
+#二三维矩阵必须规定大小，比如[[] for i in range(n)]，几行要说清楚。这时的低维是没有赋值的！也不能区分低维有几个
+#比如不能用C=[[]*k for i in range(n)]和C[i][l]=A[i][j]*B[j][l]，因为低维没有办法确定有几个数字！
+
+n,m,k=map(int,input().split())
+A=[[] for i in range(n)]
+B=[[] for i in range(m)]
+C=[[0]*k for i in range(n)]
+for i in range(n):
+A[i].extend(map(int,input().split()))
+print(A)
+for i in range(m):
+B[i].extend(map(int,input().split()))
+for i in range(n):
+for j in range(m):
+for l in range(k):
+C[i][l]+=A[i][j]*B[j][l]
+for i in range(n):
+for j in range(k):
+print(C[i][j],end=' ')
+print()
+
+
+#但是如果用append来赋值，必须加list；且前面的二三维空矩阵可以直接设为【】

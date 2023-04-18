@@ -1,0 +1,53 @@
+from collections import *
+n=10
+q=deque()
+for i in range(n):
+    q.append(i)
+print(q)
+print(len(q))
+if q:
+    print('not empty')
+
+for i in range(n):
+    a=q.pop()
+    print(a,end=' ')
+print()
+print(q)
+if not q:
+　　print('empty')
+　　
+
+
+
+
+
+
+from collections import *
+n=int(input())
+q=deque()
+for i in range(n):
+    s=list(map(int,input().split()))
+    if s[0]==1:
+        q.append(s[1])
+        print(q)
+    elif s[0]==2:
+        if len(q)>0:
+            q.popleft()
+            print(q)
+        else:
+            print('no')
+            break
+    elif s[0]==3:
+        print(len(q))
+
+
+
+#???????
+import queue
+pq=queue.PriorityQueue()
+pq.put([1,'abc'])
+pq.put([7,998])
+pq.put([5,True])
+print(pq.qsize())
+while not pq.empty():
+    print(pq.get(),end=' ')  #get?????????
