@@ -1,0 +1,38 @@
+#斐波那契——基本递归代码：
+def fib(n):
+    if n==1 or n==2: return 1
+    return fib(n-1)+fib(n-2)
+print(fib(20))
+
+
+#记忆化
+#大部分递归只会调用一次，但是对于少数多次调用的递归，使用“记忆化”进行优化，减少调用次数
+import sys
+sys.setrecursionlimit(30000)#设置递归深度
+def fib(n):
+    if n==1 or n==2:
+        data[n]=1
+        return data[n]
+    if data[n]!=0:    #灵魂：如果已经算过，不用再算！
+        return data[n]
+    data[n]=fib(n-1)+fib(n-2)
+    return data[n]
+data=[0]*3005
+print(fib(3000))
+
+
+
+#DFS自写排列算法：
+#全排列：
+def dfs(s,t):
+    if s==t:
+        print(a[0:n])
+    else:
+        for i in range(s,t+1):
+            a[s],a[i]=a[i],a[s]#交换
+            dfs(s+1,t)#缩小范围
+            a[i],a[s]=a[s],a[i]#恢复
+
+a=[1,2,3,4,5,6,7]
+n=3#前三个数的全排列
+dfs(0,n-1)
